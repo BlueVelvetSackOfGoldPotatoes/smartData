@@ -52,4 +52,4 @@ def install_each():
         pip.main(['install', "sklearn"])
 
 def mass_install():
-    os.system("pip install -r requirements.txt")
+    os.system("pip install -r ./requirements.txt")
