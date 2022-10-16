@@ -9,7 +9,7 @@ def main():
 
     df = pd.DataFrame(data)
 
-    smartDataObj = smartD.SmartD(df)
+    smartDataObj = smartD.SmartD(df,1)
 
 if __name__ == "__main__":
     main()

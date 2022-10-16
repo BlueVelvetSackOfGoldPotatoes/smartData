@@ -21,38 +21,40 @@ from pprint import pprint as pp
 # Local imports currently NOT in use ------------------------------------------------ ^
 
 class SmartD:
-    def __init__(self, df):
+    def __init__(self, df, bot=0):
         self.df = df
         self.known_information = ["means", "modes", "medians", "value_counts"]
-        # self.means, self.modes, self.medians, self.value_counts = self.dataDiagnostics()
-        self.dialogue = self.dialogue()
+        if bot:
+            self.dialogue = self.dialogue()
+        else:
+            self.means, self.modes, self.medians, self.value_counts = self.dataDiagnostics()
         # self.threadController = self.Dialogue()        
 
-    # def dataDiagnostics(self):
-    #     means, modes, medians, value_counts = {}, {}, {}, {}
+    def dataDiagnostics(self):
+        means, modes, medians, value_counts = {}, {}, {}, {}
 
-    #     for col in self.df.columns:
-    #         value_counts[col] = self.df[col].value_counts()
-    #         modes[col] = self.df[col].mode()
-    #         if pd.api.types.is_numeric_dtype(self.df[col]):
-    #             means[col] = self.df[col].mean()
-    #             medians[col] = self.df[col].median()
-    #         else:
-    #             means[col] = "Not numeric"
-    #             medians[col] = "Not numeric"
+        for col in self.df.columns:
+            value_counts[col] = self.df[col].value_counts()
+            modes[col] = self.df[col].mode()
+            if pd.api.types.is_numeric_dtype(self.df[col]):
+                means[col] = self.df[col].mean()
+                medians[col] = self.df[col].median()
+            else:
+                means[col] = "Not numeric"
+                medians[col] = "Not numeric"
 
-    #     print("### MEANS ###")     
-    #     pp(means)
+        print("### MEANS ###")     
+        pp(means)
 
-    #     print("### MEDIANS ###")     
-    #     pp(medians)
+        print("### MEDIANS ###")     
+        pp(medians)
 
-    #     print("### MODES ###")     
-    #     pp(modes)
+        print("### MODES ###")     
+        pp(modes)
 
-    #     print(self.df.describe())
+        print(self.df.describe())
 
-    #     return means, modes, medians, value_counts
+        return means, modes, medians, value_counts
 
     def means(self):
         dic = {}
@@ -124,3 +126,4 @@ class SmartD:
     """
         TODO 2,3 ------------------------------------------------------------------------------------------------------------- ^
     """
+
